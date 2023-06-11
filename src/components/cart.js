@@ -8,7 +8,6 @@ export const Cart = () => {
     const navigate = useNavigate()
     const { state, dispatch: addToCartDispatch } = useContext(Store)
     const { cart: { cartProducts } } = state
-
     const updateCartHandler = async (item, quantity) => {
         const { data } = await axios.get(`/api/products/${item._id}`)
 
@@ -20,7 +19,6 @@ export const Cart = () => {
         addToCartDispatch({ type: 'CART_ADD_PRODUCT', payload: { ...item, quantity } })
 
     }
-
     const deleteCartHandler = (item) => {
         addToCartDispatch({ type: 'CART_DELETE_PRODUCT', payload: item })
     }
@@ -36,7 +34,7 @@ export const Cart = () => {
 
             <div className="flex jc:center m:1.5rem|0">
                 {cartProducts.length === 0 ?
-                    <span>Cart is Emply !</span>
+                    <span>Cart is Empty !</span>
                     :
                     <>
                         <div className="border:1px|solid|#DEE1EC">

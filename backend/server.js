@@ -2,15 +2,20 @@ import express from 'express'
 import data from './data.js'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import seedRouter from './routes/seedRoutes.js'
 
 dotenv.config()
-mongoose.connect(process.env.MONGODB_URI).then(() => {
-    console.log('connect to db');
-}).catch(err => {
-    console.log(err.message);
-})
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+        console.log('connect to db');
+    })
+
+    .catch(err => {
+        console.log(err.message);
+    })
 
 const app = express()
+app.use('/api/seed', seedRouter)
 // test
 app.get('/api/products', (req, res) => {
     res.send(data.products)

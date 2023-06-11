@@ -31,13 +31,14 @@ const reducer = (state, action) => {
             {
                 const cartProducts = state.cart.cartProducts.filter(
                     (product) => product._id !== action.payload._id
-                )
+                );
+                localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
                 return {
                     ...state,
                     cart: { ...state.cart, cartProducts }
-
-                }
+                };
             }
+
         default:
             break;
     }

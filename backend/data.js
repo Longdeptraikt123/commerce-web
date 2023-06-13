@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs'
 const data = {
     users: [
         {
-            name: 'long',
+            name: 'Long',
             email: 'admin@example.com',
             password: bcrypt.hashSync('123456'),
             isAdmin: true
@@ -63,7 +63,7 @@ const data = {
             category: 'Pants',
             image: '/images/p4.jpg',
             price: 65,
-            countInStock: 0,
+            countInStock: 5,
             brand: 'Puma',
             rating: 4.5,
             numReviews: 10,

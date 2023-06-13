@@ -69,7 +69,7 @@ const List = () => {
         const existProduct = cart.cartProducts.find((x) => x._id === product._id)
         const quantity = existProduct ? existProduct.quantity + 1 : 1
         const { data } = await axios.get(`/api/products/${product._id}`)
-
+        
         if (data.countInStock < quantity) {
             window.alert("Product is out of stock")
             return;

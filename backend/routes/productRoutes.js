@@ -1,13 +1,13 @@
 import express from 'express'
 import Product from '../models/productModel.js'
 
-const ProductRoutes = express.Router()
-ProductRoutes.get('/', async (req, res) => {
+const productRouter = express.Router()
+productRouter.get('/', async (req, res) => {
     const products = await Product.find()
     res.send(products)
 })
 
-ProductRoutes.get('/slug/:slug', async (req, res) => {
+productRouter.get('/slug/:slug', async (req, res) => {
     const product = await Product.findOne({ slug: req.params.slug })
     if (product) {
         res.send(product)
@@ -17,7 +17,7 @@ ProductRoutes.get('/slug/:slug', async (req, res) => {
     }
 })
 
-ProductRoutes.get('/:id', async (req, res) => {
+productRouter.get('/:id', async (req, res) => {
     const product = await Product.findById(req.params.id)
     if (product) {
         res.send(product)
@@ -27,4 +27,4 @@ ProductRoutes.get('/:id', async (req, res) => {
     }
 })
 
-export default ProductRoutes
+export default productRouter

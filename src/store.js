@@ -5,7 +5,15 @@ const initState = {
     cart: {
         cartProducts: localStorage.getItem('cartProducts') ?
             JSON.parse(localStorage.getItem('cartProducts')) : [],
-    }
+            
+        shippingAddress: localStorage.getItem('shippingAddress')
+            ? JSON.parse(localStorage.getItem('shippingAddress'))
+            : {},
+    },
+
+    userInfo: localStorage.getItem('userInfo')
+        ? JSON.parse(localStorage.getItem('userInfo'))
+        : null,
 }
 const reducer = (state, action) => {
     switch (action.type) {
@@ -39,6 +47,28 @@ const reducer = (state, action) => {
                 };
             }
 
+        case "USER_LOGIN":
+            return {
+                ...state,
+                userInfo: action.payload
+            }
+        case "USER_LOGOUT":
+            return {
+                ...state,
+                userInfo: null,
+                cart: {
+                    cartProducts: [],
+                    shippingAddress: {}
+                }
+            }
+        case "SAVE_SHIPPING_CART":
+            return {
+                ...state,
+                cart: {
+                    ...state.cart,
+                    shippingAddress: action.payload
+                }
+            }
         default:
             break;
     }

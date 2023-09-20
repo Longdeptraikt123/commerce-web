@@ -14,6 +14,8 @@ const Navbar = () => {
     const logoutHandler = () => {
         addToCartDispatch({ type: 'USER_LOGOUT' });
         localStorage.removeItem('userInfo');
+        localStorage.removeItem('shippingAddress');
+        localStorage.removeItem('paymentMethod');
     };
 
     const toggleDropdown = () => {
@@ -66,12 +68,7 @@ const Navbar = () => {
                     )}
                 </div>
 
-                <div className='rel transition:0.2s|ease f:14px@<xs opacity:0.5:hover'>
-                    <Link className='m:0|8px color:#fff p:0|10px' to='#a'>
-                        Admin
-                    </Link>
-                    <IoMdArrowDropdownCircle className=' abs top:0 right:5 color:#fff f:13px' />
-                </div>
+
             </div>
         </div>
     );

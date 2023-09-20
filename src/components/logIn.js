@@ -38,9 +38,9 @@ const Login = () => {
                 <h1>Log in Form</h1>
             </div>
             <form onSubmit={submitHandler} className="flex p:1rem width:450px flex:column">
-                
+
                 <label className="m:4px|0">Email</label>
-                <input onChange={(e) => setEmail(e.target.value)} className="m:8px|0 p:8px outline:none b:1px|solid|#DDE6ED r:5px" type="email" required />
+                <input onChange={(e) => { setEmail(e.target.value) }} className="m:8px|0 p:8px outline:none b:1px|solid|#DDE6ED r:5px" type="email" required />
                 <label className="m:4px|0">Password</label>
                 <input onChange={(e) => setPassword(e.target.value)} className="m:8px|0 p:8px outline:none b:1px|solid|#DDE6ED r:5px" type="password" required />
                 <div>

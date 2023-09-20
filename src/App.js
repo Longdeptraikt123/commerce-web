@@ -8,7 +8,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Cart } from './components/cart';
 import ShippingAddress from './components/shippingAddress';
 import Logup from './components/logUp';
-
+import Payment from './components/payment';
+import Placeorder from './components/placeOrder'
 function App() {
 
   return (
@@ -21,7 +22,9 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/shipping' element={<ShippingAddress />} />
         <Route path='/logup' element={<Logup />} />
-        
+        <Route path='/payment' element={<Payment />} />
+        <Route path='/placeorder' element={<Placeorder />} />
+
       </Routes>
     </Router>
   );

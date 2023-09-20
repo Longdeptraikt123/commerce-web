@@ -13,6 +13,7 @@ function ShippingAddress() {
     const [country, setCountry] = useState(shippingAddress.country || '')
     const submitHandler = (e) => {
         e.preventDefault()
+
         addToCartDispatch({
             type: 'SAVE_SHIPPING_CART',
             payload: {
@@ -24,13 +25,24 @@ function ShippingAddress() {
             }
         });
 
+        localStorage.setItem(
+            'shippingAddress',
+            JSON.stringify({
+                fullName,
+                address,
+                city,
+                postalCode,
+                country,
+                location: shippingAddress.location,
+            })
+        );
         navigate('/payment')
     }
     useEffect(() => {
         if (!userInfo) {
             navigate('/login')
         }
-    }, [userInfo,navigate])
+    }, [userInfo, navigate])
     return (
         <div className='m:10px|0 flex flex:column align-items:center'>
             <h1>
